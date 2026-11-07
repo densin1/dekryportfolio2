@@ -279,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================
   const pricingGrid = document.getElementById('pricingGrid');
   const pricingOneoffGrid = document.getElementById('pricingOneoffGrid');
-  function pricingCardHTML(p, ui) {
-    return `<article class="pricing-card reveal${p.popular ? ' pricing-card--popular' : ''}">${p.popular ? `<div class="pricing-card__badge">${ui.popularBadge}</div>` : ''}<h3 class="pricing-card__name">${p.name}</h3><div class="pricing-card__price">${p.price}</div><ul class="pricing-card__features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><a href="https://t.me/des1n" target="_blank" rel="noopener" class="btn ${p.popular ? 'btn--primary' : 'btn--outline'} btn--block">${ui.ctaDiscussTelegram}</a></article>`;
+  function pricingCardHTML(p, ui, extra) {
+    return `<article class="pricing-card reveal${p.popular ? ' pricing-card--popular' : ''}${extra ? ' ' + extra : ''}">${p.popular ? `<div class="pricing-card__badge">${ui.popularBadge}</div>` : ''}<h3 class="pricing-card__name">${p.name}</h3><div class="pricing-card__price">${p.price}</div><ul class="pricing-card__features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><a href="https://t.me/des1n" target="_blank" rel="noopener" class="btn ${p.popular ? 'btn--primary' : 'btn--outline'} btn--block">${ui.ctaDiscussTelegram}</a></article>`;
   }
   function renderPricing() {
     const ui = C().ui;
     pricingGrid.innerHTML = C().pricing.map(p => pricingCardHTML(p, ui)).join('');
-    if (pricingOneoffGrid) pricingOneoffGrid.innerHTML = (C().pricingOneoff || []).map(p => pricingCardHTML(p, ui)).join('');
+    if (pricingOneoffGrid) pricingOneoffGrid.innerHTML = (C().pricingOneoff || []).map(p => pricingCardHTML(p, ui, 'pricing-card--compact')).join('');
     observeReveal();
   }
 

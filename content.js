@@ -15,11 +15,11 @@ const DK_CONTENT = {
 
     nav: [
       { id: 'hero', label: 'Головна' },
+      { id: 'pricing', label: 'Вартість' },
       { id: 'video', label: 'Відеомонтаж' },
       { id: 'design', label: 'Дизайн' },
       { id: 'skills', label: 'Навички' },
       { id: 'testimonials', label: 'Відгуки' },
-      { id: 'pricing', label: 'Вартість' },
       { id: 'contact', label: 'Контакти' }
     ],
 
@@ -104,11 +104,11 @@ const DK_CONTENT = {
 
     nav: [
       { id: 'hero', label: 'Home' },
+      { id: 'pricing', label: 'Pricing' },
       { id: 'video', label: 'Video Editing' },
       { id: 'design', label: 'Design' },
       { id: 'skills', label: 'Skills' },
       { id: 'testimonials', label: 'Testimonials' },
-      { id: 'pricing', label: 'Pricing' },
       { id: 'contact', label: 'Contact' }
     ],
 
@@ -193,11 +193,11 @@ const DK_CONTENT = {
 
     nav: [
       { id: 'hero', label: 'Главная' },
+      { id: 'pricing', label: 'Стоимость' },
       { id: 'video', label: 'Видеомонтаж' },
       { id: 'design', label: 'Дизайн' },
       { id: 'skills', label: 'Навыки' },
       { id: 'testimonials', label: 'Отзывы' },
-      { id: 'pricing', label: 'Стоимость' },
       { id: 'contact', label: 'Контакты' }
     ],
 

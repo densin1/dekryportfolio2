@@ -327,8 +327,13 @@ img, video { max-width: 100%; display: block; }
 .pricing-card__features { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
 .pricing-card__features li { margin-bottom: 0.75rem; color: var(--text-secondary); padding-left: 1.5rem; position: relative; }
 .pricing-card__features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
-.pricing__subtitle { font-size: 1.25rem; font-weight: 700; margin: 0 0 1.25rem; }
-.pricing__subtitle--second { margin-top: 3.5rem; }
+.pricing__subtitle { font-size: 1.25rem; font-weight: 700; margin: 0 0 1.5rem; text-align: center; }
+.pricing__subtitle--second { margin-top: 3rem; }
+.pricing-card--compact { padding: 1.25rem 1.5rem; }
+.pricing-card--compact .pricing-card__name { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.pricing-card--compact .pricing-card__price { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.pricing-card--compact .pricing-card__features { font-size: 0.9rem; margin-bottom: 1.25rem; }
+.pricing-card--compact .pricing-card__features li { margin-bottom: 0.4rem; }
 .pricing__disclaimer { text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem; }
 
 /* === FLOATING CTA === */
