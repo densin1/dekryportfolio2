@@ -234,10 +234,47 @@ dialog img{display:block;max-width:94vw;max-height:90vh;border-radius:14px;curso
 @media(max-width:900px){.mb{display:flex}.wg{grid-template-columns:repeat(3,1fr)}.ab{grid-template-columns:1fr;gap:30px}.tm{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.vb{grid-template-columns:1fr;gap:14px;padding:12px;max-height:92vh;overflow:auto}.vd video{height:min(58vh,560px);margin:0 auto}.vd.yt video{height:auto}.vi{padding:4px}.vx{top:8px;right:8px}}
 @media(max-width:520px){.wg{grid-template-columns:1fr 1fr;gap:10px}.wc.yt{grid-column:span 2}.wo{left:10px;right:10px;bottom:10px}.wo h3{font-size:15px}.pi{width:34px;height:34px;right:8px;top:8px}.vl,.tm{gap:10px}.vl li,.tm li{padding:16px}.vl h3,.tm h3{font-size:17px}.vl p,.tm p{font-size:14px}.rh{margin-bottom:28px}.ar button{width:42px;height:42px}}
+
+/* ---- v2: webgl hero, scroll choreography, micro-interactions ---- */
+.gl{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+.gl.on{opacity:var(--go,1)}
+h1 .gr{background:linear-gradient(100deg,#c9bfff 0%,#8f7dff 38%,#5ec8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+header{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+header.hd{transform:translateY(-101%)}
+.btn{transition:background .2s,border-color .2s,color .2s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.btn.p{box-shadow:0 10px 30px -12px rgba(161,147,255,.75)}
+.lang button{min-height:40px}
+/* floating Telegram: appears after the hero, hides near the contact block */
+.fl{display:inline-flex!important;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border-radius:999px;background:var(--ac);color:#0d0a1f;font:800 15px var(--f);text-decoration:none;box-shadow:0 14px 40px -12px rgba(161,147,255,.8);opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .3s,transform .35s cubic-bezier(.2,.7,.2,1),background .2s}
+.fl.on{opacity:1;transform:none;pointer-events:auto}
+.fl:hover{background:var(--tx)}
+@media(max-width:700px){.fl{width:56px;padding:0;justify-content:center}.fl span{display:none}}
+/* work cards: 3D tilt driven by --rx/--ry */
+.wc,.vt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:border-color .2s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.vt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--py,0px))}
+.wc:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px)}
+.wc.tilt,.vt.tilt{transition:border-color .2s,transform .12s linear}
+/* process: progress line filled on scroll via --p */
+.stp{position:relative}
+.stp::before{content:"";position:absolute;left:0;right:0;top:0;height:1.5px;background:var(--g);transform:scaleX(var(--p,1));transform-origin:0 50%;z-index:1;pointer-events:none}
+.stp li::after{z-index:2;transition:background .3s,box-shadow .3s}
+.stp.js li:not(.on)::after{background:#3a3555;box-shadow:none}
+.stp li h3,.stp li p{transition:opacity .4s}
+.stp.js li:not(.on) h3,.stp.js li:not(.on) p{opacity:.45}
+@media(max-width:900px){
+ .stp{gap:0;padding-left:30px}
+ .stp::after{content:"";position:absolute;left:4px;top:4px;bottom:34px;width:1.5px;background:var(--ln)}
+ .stp::before{left:4px;right:auto;bottom:34px;width:1.5px;height:auto;top:4px;transform:scaleY(var(--p,1));transform-origin:50% 0}
+ .stp li{border-top:0;padding:0 0 34px}
+ .stp li::after{top:4px;left:-30px}
+ .stp li::before{margin-bottom:8px}
+}
+@media(pointer:coarse){.wc,.vt{transform:none}}
+@media(prefers-reduced-motion:reduce){.gl{display:none}.wc,.vt{transform:none}header.hd{transform:none}.fl{transition:none}}
 </style>
 </head>
 <body>
-<div class="bg" aria-hidden="true"><i></i><i></i><i></i><div class="cur" style=""></div></div>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i><canvas class="gl"></canvas><div class="cur" style=""></div></div>
 <a class="sk" href="#services" data-t="skip">До змісту</a><div class="pg" aria-hidden="true" style=""></div>
 <header><div class="w">
 <a class="logo" href="#top">dekry</a>
@@ -252,7 +289,7 @@ dialog img{display:block;max-width:94vw;max-height:90vh;border-radius:14px;curso
 <main id="top">
 <div class="w">
 <div class="chip"><i></i><span data-t="chip">Відповідаємо протягом кількох годин</span></div>
-<h1 data-t="h1" aria-label="Відео і дизайн, що продають"><span class="w2" aria-hidden="true"><span style="animation-delay:0ms">Відео</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:120ms">і</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:240ms">дизайн,</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:360ms">що</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:480ms">продають</span></span></h1>
+<h1 data-t="h1" aria-label="Відео і дизайн, що продають"><span class="w2" aria-hidden="true"><span style="animation-delay:0ms">Відео</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:120ms">і</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:240ms">дизайн,</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:360ms">що</span></span> <span class="w2" aria-hidden="true"><span class="gr" style="animation-delay:480ms">продають</span></span></h1>
 <div class="hr">
 <p class="sub" data-t="sub">Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.</p>
 <div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a><a class="btn" href="#services" data-t="c2">Що ми робимо</a></div>
@@ -320,7 +357,7 @@ dialog img{display:block;max-width:94vw;max-height:90vh;border-radius:14px;curso
 <video controls playsinline preload="metadata"></video>
 <div class="vi"><span class="wk"></span><h3 id="vdT"></h3><p></p><span class="cs"></span><a class="btn p" href="https://t.me/des1n" data-t="mC">Хочу так само</a></div>
 </div></dialog>
-<a class="btn p fl" href="https://t.me/des1n" aria-label="Telegram">Telegram</a>
+<a class="fl" href="https://t.me/des1n" aria-label="Telegram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg><span>Telegram</span></a>
 
 <script>
 var D={
@@ -428,7 +465,7 @@ function R(l){
  $('link[rel=canonical]').setAttribute('href',d.u);
  [['og:title',d.title],['og:description',d.desc],['og:url',d.u],['og:locale',d.loc]].forEach(function(p){var m=document.querySelector('meta[property="'+p[0]+'"]');if(m)m.setAttribute('content',p[1])});
  document.querySelectorAll('[data-t]').forEach(function(e){if(d[e.dataset.t]!==undefined)e.textContent=d[e.dataset.t]});
- var h=$('h1');h.setAttribute('aria-label',d.h1);h.innerHTML=d.h1.split(' ').map(function(w,i){return'<span class="w2" aria-hidden="true"><span style="animation-delay:'+(i*120)+'ms">'+w+'</span></span>'}).join(' ');
+ var h=$('h1');h.setAttribute('aria-label',d.h1);var hw=d.h1.split(' ');h.innerHTML=hw.map(function(w,i){return'<span class="w2" aria-hidden="true"><span'+(i===hw.length-1?' class="gr"':'')+' style="animation-delay:'+(i*120)+'ms">'+w+'</span></span>'}).join(' ');
  $('#st').innerHTML=d.st.map(function(x){return'<div><b data-n="'+parseInt(x[0])+'" data-s="'+x[0].replace(/[0-9]/g,'')+'">'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
  var cl=['lg','wd','wd'];
  var ic=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="4.5"/><rect x="11" y="11" width="9" height="9" rx="2"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'];
@@ -532,7 +569,152 @@ document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener
  vd.addEventListener('click',function(e){if(e.target===vd)vd.close()});
  vd.querySelector('.vx').addEventListener('click',function(){vd.close()});
 })();
+
+/* ---- v2 enhancements ---- */
+(function(){
+ var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var FINE=window.matchMedia&&matchMedia('(hover: hover) and (pointer: fine)').matches;
+ var hdr=document.querySelector('header'),mm=document.getElementById('mm'),fl=document.querySelector('.fl');
+
+ // Header hides on scroll down, returns on scroll up; floating CTA shows between hero and contact.
+ var ly=scrollY,tk=false,nearEnd=false;
+ function onScroll(){
+  tk=false;var y=scrollY,dy=y-ly;
+  if(Math.abs(dy)>6){
+   var hide=dy>0&&y>innerHeight*.6&&mm.hidden&&!hdr.contains(document.activeElement);
+   hdr.classList.toggle('hd',hide);ly=y;
+  }
+  if(y<80)hdr.classList.remove('hd');
+  fl.classList.toggle('on',y>innerHeight*.75&&!nearEnd);
+ }
+ addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(onScroll)}},{passive:true});
+ document.querySelector('.mb').addEventListener('click',function(){hdr.classList.remove('hd')});
+ if('IntersectionObserver' in window){
+  var seen={};
+  var eo=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.id||'f']=e.isIntersecting});nearEnd=seen.contact||seen.f;onScroll()});
+  ['contact'].forEach(function(id){var el=document.getElementById(id);if(el)eo.observe(el)});
+  eo.observe(document.querySelector('footer'));
+ }
+ onScroll();
+
+ if(RM)return;
+
+ // Pointer micro-interactions: magnetic primary buttons and 3D tilt on work tiles.
+ if(FINE){
+  var mag=null,tl=null;
+  document.addEventListener('pointermove',function(e){
+   var b=e.target.closest&&e.target.closest('.btn.p,.fl');
+   if(mag&&mag!==b){mag.style.transform='';mag=null}
+   if(b){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.18).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*.28).toFixed(1)+'px)';mag=b}
+   var c=e.target.closest&&e.target.closest('.wc,.vt');
+   if(tl&&tl!==c){tl.classList.remove('tilt');tl.style.removeProperty('--rx');tl.style.removeProperty('--ry');tl=null}
+   if(c){var q=c.getBoundingClientRect(),px=(e.clientX-q.left)/q.width-.5,py=(e.clientY-q.top)/q.height-.5;c.classList.add('tilt');c.style.setProperty('--ry',(px*9).toFixed(2)+'deg');c.style.setProperty('--rx',(-py*9).toFixed(2)+'deg');tl=c}
+  },{passive:true});
+  document.addEventListener('pointerleave',function(){if(mag){mag.style.transform='';mag=null}if(tl){tl.classList.remove('tilt');tl.style.removeProperty('--rx');tl.style.removeProperty('--ry');tl=null}});
+ }
+
+ // WebGL hero: domain-warped noise in brand colours. Rendered at reduced resolution and only while the hero is on screen.
+ (function(){
+  var cv=document.querySelector('.gl');if(!cv)return;
+  // Desktop only: phones keep the CSS gradient blobs (battery, and canvas compositing glitches seen in mobile emulation).
+  if(innerWidth<901||matchMedia('(pointer: coarse)').matches)return;
+  var sd=navigator.connection&&navigator.connection.saveData;if(sd)return;
+  var gl=cv.getContext('webgl',{antialias:false,alpha:false,depth:false,stencil:false,powerPreference:'low-power'});if(!gl)return;
+  var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+  // highp + sin-free hash: the classic fract(sin()) hash breaks into blocks at mediump on mobile GPUs.
+  var fs=['#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\nuniform vec2 r;uniform float t;uniform vec2 m;',
+  'float h(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}',
+  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}',
+  'float fb(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}',
+  'void main(){vec2 uv=gl_FragCoord.xy/r;vec2 p=(gl_FragCoord.xy-.5*r)/r.y;float s=t*.045;',
+  'vec2 mp=(m-.5)*vec2(r.x/r.y,1.);float md=exp(-2.6*length(p-mp));',
+  'vec2 q=vec2(fb(p*1.5+s),fb(p*1.5-s+5.2));',
+  'vec2 w=vec2(fb(p*1.7+2.*q+vec2(1.7,9.2)+s*1.4+md*.5),fb(p*1.7+2.*q+vec2(8.3,2.8)-s));',
+  'float f=fb(p*1.3+2.3*w);',
+  'vec3 bg=vec3(.031,.027,.059),c1=vec3(.424,.294,1.),c2=vec3(.118,.549,1.),c3=vec3(.604,.271,1.);',
+  'vec3 c=mix(c2,c1,smoothstep(.25,.75,q.x));c=mix(c,c3,smoothstep(.35,.85,w.y));',
+  'float k=smoothstep(.3,.9,f);',
+  'k*=mix(.3,1.,smoothstep(.0,.7,uv.x))*mix(.25,1.,smoothstep(.0,.55,uv.y));',
+  'vec3 col=mix(bg,c,k*.95);',
+  'col+=c1*.45*exp(-1.6*length(p-vec2(.55,.32)))*(.75+.25*sin(t*.3));',
+  'col+=vec3(.55,.5,1.)*md*.09;',
+  'gl_FragColor=vec4(col,1.);}'].join('\n');
+  function sh(tp,src){var s=gl.createShader(tp);gl.shaderSource(s,src);gl.compileShader(s);return gl.getShaderParameter(s,gl.COMPILE_STATUS)?s:null}
+  var v=sh(gl.VERTEX_SHADER,vs),f=sh(gl.FRAGMENT_SHADER,fs);if(!v||!f)return;
+  var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  var al=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(al);gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
+  var ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t'),um=gl.getUniformLocation(pr,'m');
+  var sc=FINE?.5:.33,mx=.7,my=.7,tx=.7,ty=.7,run=false,t0=performance.now(),raf=0;
+  function size(){var w=Math.max(1,Math.round(innerWidth*sc)),h=Math.max(1,Math.round(innerHeight*sc));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}}
+  function frame(now){
+   raf=0;if(!run)return;
+   mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+   gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,(now-t0)/1000);gl.uniform2f(um,mx,my);
+   gl.drawArrays(gl.TRIANGLES,0,3);
+   raf=requestAnimationFrame(frame);
+  }
+  function upd(){
+   var o=1-Math.min(1,scrollY/(innerHeight*1.1));
+   cv.style.setProperty('--go',o.toFixed(3));
+   var want=o>0.02&&!document.hidden;
+   if(want&&!run){run=true;if(!raf)raf=requestAnimationFrame(frame)}else if(!want)run=false;
+  }
+  size();addEventListener('resize',size);
+  addEventListener('scroll',upd,{passive:true});document.addEventListener('visibilitychange',upd);
+  if(FINE)addEventListener('pointermove',function(e){tx=e.clientX/innerWidth;ty=1-e.clientY/innerHeight},{passive:true});
+  upd();requestAnimationFrame(function(){cv.classList.add('on')});
+ })();
+
+ // GSAP ScrollTrigger choreography. Optional: if the CDN fails, the page keeps its static layout.
+ addEventListener('DOMContentLoaded',function(){
+  var G=window.gsap,ST=window.ScrollTrigger;if(!G||!ST)return;
+  G.registerPlugin(ST);
+  var mmq=G.matchMedia();
+
+  // Process steps: fill the line and light up each step as it is reached.
+  var ps=document.getElementById('ps');
+  if(ps){
+   ps.classList.add('js');
+   ST.create({trigger:ps,start:'top 78%',end:'bottom 60%',scrub:.6,onUpdate:function(s){
+    var p=s.progress,vert=getComputedStyle(ps).paddingLeft!=='0px',ext=vert?ps.offsetHeight:ps.offsetWidth;
+    ps.style.setProperty('--p',p.toFixed(3));
+    [].forEach.call(ps.children,function(li){li.classList.toggle('on',(vert?li.offsetTop:li.offsetLeft)<=p*ext+8)});
+   },onRefresh:function(s){s.vars.onUpdate(s)}});
+  }
+
+  // Marquee speeds up and skews with scroll velocity.
+  var mt=document.querySelector('.mt');
+  if(mt){
+   mt.style.animation='none';
+   var loop=G.to(mt,{xPercent:-50,duration:36,ease:'none',repeat:-1});
+   var sk=G.quickTo(mt,'skewX',{duration:.4,ease:'power3'});
+   ST.create({trigger:'.mq',start:'top bottom',end:'bottom top',onUpdate:function(s){
+    var v=Math.min(Math.abs(s.getVelocity())/250,8);
+    G.to(loop,{timeScale:1+v,duration:.25,overwrite:true,onComplete:function(){G.to(loop,{timeScale:1,duration:1.2})}});
+    sk(G.utils.clamp(-10,10,s.getVelocity()/-180));
+   },onLeave:function(){sk(0)},onLeaveBack:function(){sk(0)}});
+  }
+
+  mmq.add('(min-width: 901px)',function(){
+   // Hero: video tiles drift at different speeds, headline eases away.
+   var off=[-30,-90,-15,-70];
+   G.utils.toArray('.vs .vt').forEach(function(el,i){
+    G.fromTo(el,{'--py':'0px'},{'--py':off[i%4]+'px',ease:'none',scrollTrigger:{trigger:'.vs',start:'top 85%',end:'bottom top',scrub:true}});
+   });
+   G.to('main > .w:first-child',{yPercent:-10,opacity:.35,ease:'none',scrollTrigger:{trigger:'main > .w:first-child',start:'top top',end:'bottom top',scrub:true}});
+   // Contact card grows into place.
+   G.fromTo('.cbx',{scale:.94},{scale:1,ease:'none',scrollTrigger:{trigger:'.ct',start:'top bottom',end:'top 45%',scrub:true}});
+  });
+
+  // Language switch re-renders sections and changes heights.
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(function(){ST.refresh()},60)})});
+ });
+})();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js" defer></script>
 
 
 </body></html>
