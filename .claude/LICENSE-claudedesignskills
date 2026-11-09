@@ -1,5 +1,6 @@
 Files in .claude/skills, .claude/agents and .claude/commands are copied from
-https://github.com/freshtechbro/claudedesignskills (plugins/bundles/core-3d-animation).
+https://github.com/freshtechbro/claudedesignskills (all bundles under plugins/bundles/, plus .claude/skills/skill-creator,
+which carries its own LICENSE.txt).
 
 MIT License
 
