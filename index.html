@@ -78,7 +78,7 @@ h2{font:800 clamp(30px,5vw,56px)/1 var(--f);letter-spacing:-.03em;margin-bottom:
 .ocs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .ocd{display:flex;flex-direction:column;gap:8px;padding:24px;background:var(--gl);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1.5px solid var(--ln);border-radius:18px;text-decoration:none;transition:border-color .2s,transform .2s}
 .ocd:hover{border-color:var(--tx);transform:translateY(-3px)}
-.ocd h4{font:800 21px/1.15 var(--f);letter-spacing:-.02em}.ocd p{color:var(--mut);font-size:15px}.ocd .tf{padding-top:14px}
+.ocd h3{font:800 21px/1.15 var(--f);letter-spacing:-.02em}.ocd p{color:var(--mut);font-size:15px}.ocd .tf{padding-top:14px}
 .nt{margin-top:22px;color:var(--mut);font-size:15px}
 details{background:var(--gl);border:1.5px solid var(--ln);border-radius:12px;padding:20px 24px;margin-bottom:10px}
 details[open]{border-color:var(--ac)}
@@ -172,7 +172,7 @@ dialog img{display:block;max-width:94vw;max-height:90vh;border-radius:14px;curso
 .tabs button[aria-selected=true]{background:var(--tx);color:#0d0a1f}
 .pks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .pcd{display:flex;flex-direction:column;gap:14px;padding:30px;background:var(--gl);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1.5px solid var(--ln);border-radius:18px}
-.pcd h4{font:800 28px/1 var(--f);letter-spacing:-.025em}
+.pcd h3{font:800 28px/1 var(--f);letter-spacing:-.025em}
 .pcd .pt{color:var(--mut);font-size:15px;margin-top:-6px}
 .pcd .pp{font:800 44px/1 var(--f);letter-spacing:-.03em;margin:8px 0;font-variant-numeric:tabular-nums}
 .pcd .pp small{font:500 16px var(--f);color:var(--mut);letter-spacing:0}
@@ -269,6 +269,20 @@ header.hd{transform:translateY(-101%)}
 }
 @media(pointer:coarse){.wc,.vt{transform:none}}
 @media(prefers-reduced-motion:reduce){.wc,.vt{transform:none}header.hd{transform:none}.fl{transition:none}}
+
+/* ---- v3: conversion and usability ---- */
+.hc{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.hn{font-size:14px;color:var(--mut)}
+.wcta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:40px;padding:24px 28px;border:1.5px solid var(--ln);border-radius:18px;background:var(--gl)}
+.wcta p{font:800 clamp(20px,2.4vw,26px)/1.2 var(--f);letter-spacing:-.02em;max-width:560px}
+.chn{color:var(--mut);font-size:15px;margin:-14px 0 24px;padding-left:14px;border-left:3px solid var(--ac);max-width:470px}
+.dzb{display:block;padding:0;border:0;background:none;border-radius:12px;cursor:zoom-in}
+.dzb img{pointer-events:none}
+#lb .vx{top:8px;right:8px}
+.vt .pi{transition:opacity .2s}.vt.pl .pi{opacity:0}
+@media(max-width:520px){.lang button{padding:6px 4px;font-size:13px}header .w{gap:8px}.hc,.hc .cta{width:100%}.hc .btn{flex:1 1 100%;text-align:center}.wcta{padding:20px}.wcta .btn{width:100%;text-align:center}}
+@media(max-width:400px){header .w>.btn{display:none}}
+@media(max-width:700px){.fl{width:auto;padding:0 20px 0 16px}.fl span{display:inline}}
 </style>
 </head>
 <body>
@@ -290,7 +304,7 @@ header.hd{transform:translateY(-101%)}
 <h1 data-t="h1" aria-label="Відео і дизайн, що продають"><span class="w2" aria-hidden="true"><span style="animation-delay:0ms">Відео</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:120ms">і</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:240ms">дизайн,</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:360ms">що</span></span> <span class="w2" aria-hidden="true"><span class="gr" style="animation-delay:480ms">продають</span></span></h1>
 <div class="hr">
 <p class="sub" data-t="sub">Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.</p>
-<div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a><a class="btn" href="#services" data-t="c2">Що ми робимо</a></div>
+<div class="hc"><div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a><a class="btn" href="#work" data-t="c2">Дивитися роботи</a></div><p class="hn" data-t="hn"></p></div>
 </div>
 <div class="st" id="st"><div><b data-n="500" data-s="+">500+</b><span>відео та креативів</span></div><div><b data-n="100" data-s="+">100+</b><span>клієнтів</span></div><div><b data-n="3" data-s="">3</b><span>роки досвіду</span></div></div>
 </div>
@@ -309,8 +323,9 @@ header.hd{transform:translateY(-101%)}
 <div class="wg" id="wg"></div>
 <h3 class="wh" data-t="wD">Дизайн</h3>
 <div class="dg">
-<img src="https://cdn.dekry.cc/img/design-1.jpg" alt="Design" loading="lazy" decoding="async"><img src="https://cdn.dekry.cc/img/design-2.jpg" alt="Design" loading="lazy" decoding="async"><img src="https://cdn.dekry.cc/img/design-3.jpg" alt="Design" loading="lazy" decoding="async"><img src="https://cdn.dekry.cc/img/design-4.jpg" alt="Design" loading="lazy" decoding="async">
-</div></div></section>
+<button type="button" class="dzb"><img src="https://cdn.dekry.cc/img/design-1.jpg" alt="Design" loading="lazy" decoding="async"></button><button type="button" class="dzb"><img src="https://cdn.dekry.cc/img/design-2.jpg" alt="Design" loading="lazy" decoding="async"></button><button type="button" class="dzb"><img src="https://cdn.dekry.cc/img/design-3.jpg" alt="Design" loading="lazy" decoding="async"></button><button type="button" class="dzb"><img src="https://cdn.dekry.cc/img/design-4.jpg" alt="Design" loading="lazy" decoding="async"></button>
+</div>
+<div class="wcta"><p data-t="wC"></p><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a></div></div></section>
 
 <section id="services" style="padding-top:0"><div class="w"><h2 data-t="sT">Що ми робимо</h2>
 <div class="bn" id="bn"><a class="tl lg" href="https://t.me/des1n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg></span><h3>Reels і відео</h3><p>Монтаж Reels, Shorts і YouTube: ритм, субтитри, звук, обкладинки.</p><span class="cs"><span>Reels</span><span>Shorts</span><span>TikTok</span><span>YouTube</span></span><span class="pr">від $10</span></a><a class="tl wd" href="https://t.me/des1n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="4.5"></circle><rect x="11" y="11" width="9" height="9" rx="2"></rect></svg></span><h3>Дизайн</h3><p>Креативи для реклами, банери, обкладинки, фірмовий стиль.</p><span class="cs"><span>Instagram</span><span>YouTube</span><span>Ads</span><span>Brand</span></span><span class="pr">від $8</span></a><a class="tl wd" href="https://t.me/des1n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span><h3>Ведення акаунта</h3><p>Контент-план, публікації, підписи, відповіді, звіт.</p><span class="cs"><span>Instagram</span><span>TikTok</span><span>Reels</span></span><span class="pr">від $700 / міс</span></a></div>
@@ -328,7 +343,7 @@ header.hd{transform:translateY(-101%)}
 
 <section id="pricing" style="padding-top:0"><div class="w"><h2 data-t="kT">Ціни</h2>
 <div class="tabs" role="tablist"><button role="tab" id="tb1" aria-selected="true" aria-controls="pn1" data-tab="1" data-t="k1T">Щомісячні пакети</button><button role="tab" id="tb2" aria-selected="false" aria-controls="pn2" data-tab="2" data-t="k2T">Разові замовлення</button></div>
-<div id="pn1" role="tabpanel" aria-labelledby="tb1"><div class="pks" id="pk"><article class="pcd"><h4>Старт</h4><p class="pt">Для знайомства та тесту</p><div class="pp"><small>від</small> $150 <small>/ міс</small></div><ul><li>4 Reels із монтажем і субтитрами</li><li>4 обкладинки</li><li>2 раунди правок на ролик</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article><article class="pcd"><h4>Ріст</h4><p class="pt">Для регулярного контенту</p><div class="pp"><small>від</small> $350 <small>/ міс</small></div><ul><li>8–12 Reels на місяць</li><li>10 шаблонів сторіс</li><li>Єдиний візуальний стиль</li><li>Контент-план і публікація за графіком</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article><article class="pcd"><h4>Під ключ</h4><p class="pt">Коли акаунт ведемо повністю</p><div class="pp"><small>від</small> $700 <small>/ міс</small></div><ul><li>Усе з пакета «Ріст»</li><li>Підписи, хештеги та відповіді</li><li>Щомісячний звіт із цифрами</li><li>Один дзвінок на місяць</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article></div></div>
+<div id="pn1" role="tabpanel" aria-labelledby="tb1"><div class="pks" id="pk"><article class="pcd"><h3>Старт</h3><p class="pt">Для знайомства та тесту</p><div class="pp"><small>від</small> $150 <small>/ міс</small></div><ul><li>4 Reels із монтажем і субтитрами</li><li>4 обкладинки</li><li>2 раунди правок на ролик</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article><article class="pcd"><h3>Ріст</h3><p class="pt">Для регулярного контенту</p><div class="pp"><small>від</small> $350 <small>/ міс</small></div><ul><li>8–12 Reels на місяць</li><li>10 шаблонів сторіс</li><li>Єдиний візуальний стиль</li><li>Контент-план і публікація за графіком</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article><article class="pcd"><h3>Під ключ</h3><p class="pt">Коли акаунт ведемо повністю</p><div class="pp"><small>від</small> $700 <small>/ міс</small></div><ul><li>Усе з пакета «Ріст»</li><li>Підписи, хештеги та відповіді</li><li>Щомісячний звіт із цифрами</li><li>Один дзвінок на місяць</li></ul><a class="btn" href="https://t.me/des1n">Замовити</a></article></div></div>
 <div id="pn2" role="tabpanel" aria-labelledby="tb2" hidden=""><div class="ocs" id="oo"></div></div>
 <p class="nt" data-t="kN">Остаточна ціна залежить від обсягу та термінів. Розрахунок після короткого брифу.</p></div></section>
 
@@ -337,6 +352,7 @@ header.hd{transform:translateY(-101%)}
 <section class="ct" id="contact"><div class="w"><div class="cbx">
 <div><h2 data-t="cT">Розкажіть про задачу</h2>
 <p class="csub" data-t="cS">Опишіть задачу в кількох реченнях. Відповімо протягом кількох годин, а після короткого брифу назвемо точну вартість.</p>
+<p class="chn" data-t="cH"></p>
 <div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="cB">Написати в Telegram</a><a class="btn" href="mailto:dendekri17@gmail.com" data-t="cE">Написати на пошту</a></div></div>
 <ul class="cn">
 <li><a href="https://t.me/des1n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg></span><span><b>Telegram</b><small>@des1n</small></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
@@ -349,13 +365,13 @@ header.hd{transform:translateY(-101%)}
 <nav><a href="https://t.me/des1n">Telegram</a><a href="https://www.behance.net/5db91123">Behance</a><a href="mailto:dendekri17@gmail.com">Email</a></nav>
 <a class="btn up" href="#top" data-t="up">Нагору</a></div>
 <div class="w cp">© <span id="yr">2026</span> Dekry</div></footer>
-<dialog id="lb"><img alt=""></dialog>
+<dialog id="lb"><button type="button" class="vx" data-a="cl" aria-label="Закрити">×</button><img alt=""></dialog>
 <dialog id="vd" class="vd" aria-labelledby="vdT"><div class="vb">
 <button type="button" class="vx" data-a="cl" aria-label="Закрити">×</button>
 <video controls playsinline preload="metadata"></video>
 <div class="vi"><span class="wk"></span><h3 id="vdT"></h3><p></p><span class="cs"></span><a class="btn p" href="https://t.me/des1n" data-t="mC">Хочу так само</a></div>
 </div></dialog>
-<a class="fl" href="https://t.me/des1n" aria-label="Telegram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg><span>Telegram</span></a>
+<a class="fl" href="https://t.me/des1n" aria-label="Telegram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg><span data-t="c1">Написати в Telegram</span></a>
 
 <script>
 var D={
@@ -363,7 +379,7 @@ uk:{u:'https://dekry.cc/',loc:'uk_UA',title:'Dekry | Відео і дизайн,
 n1:'Послуги',n2:'Роботи',n3:'Ціни',n4:'FAQ',nav:'Написати',
 h1:'Відео і дизайн, що продають',
 sub:'Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.',
-c1:'Написати в Telegram',c2:'Що ми робимо',
+c1:'Написати в Telegram',c2:'Дивитися роботи',hn:'Reels від $10 · 2 правки включено · Вихідники ваші',wC:'Хочете так само для свого бізнесу? Напишіть, обговоримо задачу.',cH:'Що написати: ніша, що потрібно зробити, терміни й орієнтовний бюджет.',
 st:[['500+','відео та креативів'],['100+','клієнтів'],['3','роки досвіду']],
 chip:'Відповідаємо протягом кількох годин',ftd:'Контент для бізнесу та експертів.',up:'Нагору',skip:'До змісту',sx:[['Сайти','Лендинги та сайти-візитки під ключ: дизайн, верстка, запуск.','від $200'],['Telegram-боти','Боти для заявок, запису клієнтів і розсилок.','від $150']],sT:'Що ми робимо',ask:'Замовити',
 sv:[['Reels і відео','Монтаж Reels, Shorts і YouTube: ритм, субтитри, звук, обкладинки.','від $10'],['Дизайн','Креативи для реклами, банери, обкладинки, фірмовий стиль.','від $8'],['Ведення акаунта','Контент-план, публікації, підписи, відповіді, звіт.','від $700 / міс']],
@@ -391,7 +407,7 @@ ru:{u:'https://dekry.cc/',loc:'ru_RU',title:'Dekry | Видео и дизайн,
 n1:'Услуги',n2:'Работы',n3:'Цены',n4:'FAQ',nav:'Написать',
 h1:'Видео и дизайн, которые продают',
 sub:'Reels, креативы, брендинг и ведение аккаунта для малого бизнеса и экспертов.',
-c1:'Написать в Telegram',c2:'Что мы делаем',
+c1:'Написать в Telegram',c2:'Смотреть работы',hn:'Reels от $10 · 2 правки включены · Исходники ваши',wC:'Хотите так же для своего бизнеса? Напишите, обсудим задачу.',cH:'Что написать: ниша, что нужно сделать, сроки и примерный бюджет.',
 st:[['500+','видео и креативов'],['100+','клиентов'],['3','года опыта']],
 chip:'Отвечаем в течение нескольких часов',ftd:'Контент для бизнеса и экспертов.',up:'Наверх',skip:'К содержимому',sx:[['Сайты','Лендинги и сайты-визитки под ключ: дизайн, вёрстка, запуск.','от $200'],['Telegram-боты','Боты для заявок, записи клиентов и рассылок.','от $150']],sT:'Что мы делаем',ask:'Заказать',
 sv:[['Reels и видео','Монтаж Reels, Shorts и YouTube: ритм, субтитры, звук, обложки.','от $10'],['Дизайн','Креативы для рекламы, баннеры, обложки, фирменный стиль.','от $8'],['Ведение аккаунта','Контент-план, публикации, подписи, ответы, отчёт.','от $700 / мес']],
@@ -419,7 +435,7 @@ en:{u:'https://dekry.cc/',loc:'en_US',title:'Dekry | Video and design that sell'
 n1:'Services',n2:'Work',n3:'Pricing',n4:'FAQ',nav:'Contact',
 h1:'Video and design that sell',
 sub:'Reels, creatives, branding and account management for small businesses and experts.',
-c1:'Message on Telegram',c2:'What we do',
+c1:'Message on Telegram',c2:'See our work',hn:'Reels from $10 · 2 revisions included · Source files are yours',wC:'Want this for your business? Message us and we’ll talk it through.',cH:'What to send: your niche, what you need, deadline and rough budget.',
 st:[['500+','videos and creatives'],['100+','clients'],['3','years of experience']],
 chip:'We reply within a few hours',ftd:'Content for businesses and experts.',up:'Back to top',skip:'Skip to content',sx:[['Websites','Landing pages and business sites end to end: design, build, launch.','from $200'],['Telegram bots','Bots for leads, bookings and broadcasts.','from $150']],sT:'What we do',ask:'Order',
 sv:[['Reels and video','Editing for Reels, Shorts and YouTube: pacing, subtitles, sound, covers.','from $10'],['Design','Ad creatives, banners, covers, brand identity.','from $8'],['Account management','Content plan, posting, captions, replies, report.','from $700 / mo']],
@@ -473,8 +489,8 @@ function R(l){
  var star='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg>';
  $('#rv').innerHTML=d.rv.map(function(x){var ini=x[1].replace(/[^A-Za-zА-Яа-яІіЇїЄєҐґ ]/g,'').split(' ').filter(Boolean).slice(0,2).map(function(w){return w[0].toUpperCase()}).join('');return'<figure class="rc"><div class="rs" role="img" aria-label="5/5">'+star+star+star+star+star+'</div><q>'+x[0]+'</q><div class="by"><span class="av">'+ini+'</span><p><b>'+x[1]+'</b><br>'+x[2]+'</p></div></figure>'}).join('');
  $('#ps').innerHTML=d.ps.map(function(x){return'<li><h3>'+x[0]+'</h3><p>'+x[1]+'</p></li>'}).join('');
- $('#pk').innerHTML=d.pk.map(function(x,i){var h=i===1;return'<article class="pcd'+(h?' hot':'')+'"><div class="ph"><h4>'+x[0]+'</h4>'+(h?'<span class="bdg">'+d.pop+'</span>':'')+'</div><p class="pt">'+x[1]+'</p><div class="pp"><small>'+x[2]+'</small> '+x[3]+' <small>'+x[4]+'</small></div><ul>'+x[5].map(function(f){return'<li>'+f+'</li>'}).join('')+'</ul><a class="btn'+(h?' p':'')+'" href="https://t.me/des1n">'+d.ask+'</a></article>'}).join('');
- $('#oo').innerHTML=d.oo.map(function(x){return'<a class="ocd" href="https://t.me/des1n"><h4>'+x[0]+'</h4><p>'+x[1]+'</p>'+TF(x[2])+'</a>'}).join('');
+ $('#pk').innerHTML=d.pk.map(function(x,i){var h=i===1;return'<article class="pcd'+(h?' hot':'')+'"><div class="ph"><h3>'+x[0]+'</h3>'+(h?'<span class="bdg">'+d.pop+'</span>':'')+'</div><p class="pt">'+x[1]+'</p><div class="pp"><small>'+x[2]+'</small> '+x[3]+' <small>'+x[4]+'</small></div><ul>'+x[5].map(function(f){return'<li>'+f+'</li>'}).join('')+'</ul><a class="btn'+(h?' p':'')+'" href="https://t.me/des1n">'+d.ask+'</a></article>'}).join('');
+ $('#oo').innerHTML=d.oo.map(function(x){return'<a class="ocd" href="https://t.me/des1n"><h3>'+x[0]+'</h3><p>'+x[1]+'</p>'+TF(x[2])+'</a>'}).join('');
  $('#fq').innerHTML=d.fq.map(function(x){return'<details><summary>'+x[0]+'</summary><p>'+x[1]+'</p></details>'}).join('');
  L=D[l]?l:'uk';
  $('#wg').innerHTML=P.map(function(n){var w=d.wk[n],yt=YT.indexOf(n)>-1;return'<a class="wc'+(yt?' yt':'')+'" href="'+vu(n)+'" data-p="'+n+'"><img src="'+CDN+'img/project-'+n+'.jpg" alt="" loading="lazy" decoding="async">'+PL+'<span class="wo"><span class="wk">'+(yt?'YouTube':'Reels')+'</span><h3>'+w[0]+'</h3>'+(w[2]?'<span class="wm">'+w[2]+'</span>':'')+'</span></a>'}).join('');
@@ -494,10 +510,14 @@ if(q==='ua')q='uk';
 var n=(navigator.language||'uk').slice(0,2);
 R(D[q]?q:D[s]?s:(D[n]?n:'uk'));
 var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-if('IntersectionObserver' in window&&!rm){
- var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
-  if(e.isIntersecting){if(!v.getAttribute('src'))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.5});
- document.querySelectorAll('video[data-src]').forEach(function(v){io.observe(v)});
+// Hero previews are 6-80 MB each, so they never autoplay: posters by default, the clip plays while hovered or focused
+// on a precise pointer. Touch devices and Save-Data keep posters only; a tap opens the full video in the modal.
+var sd=navigator.connection&&navigator.connection.saveData;
+if(!rm&&!sd&&window.matchMedia&&matchMedia('(hover: hover) and (pointer: fine)').matches){
+ document.querySelectorAll('.vt').forEach(function(a){var v=a.querySelector('video[data-src]');if(!v)return;
+  function on(){if(!v.getAttribute('src'))v.src=v.dataset.src;a.classList.add('pl');var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  function off(){v.pause();a.classList.remove('pl')}
+  a.addEventListener('pointerenter',on);a.addEventListener('pointerleave',off);a.addEventListener('focus',on);a.addEventListener('blur',off)});
 }
 
 window.fx=function(){
@@ -528,13 +548,14 @@ document.addEventListener('pointermove',function(e){
  }
  var lb=document.getElementById('lb');
  if(lb&&lb.showModal){
-  document.querySelector('.dg').addEventListener('click',function(e){var im=e.target.closest('img');if(!im)return;lb.querySelector('img').src=im.src;lb.showModal()});
+  document.querySelector('.dg').addEventListener('click',function(e){var bt=e.target.closest('.dzb');if(!bt)return;var im=bt.querySelector('img'),li=lb.querySelector('img');li.src=im.src;li.alt=im.alt;lb.showModal()});
   lb.addEventListener('click',function(){lb.close()});
  }
 })();
 
 
-document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});document.getElementById('pn1').hidden=b.dataset.tab!=='1';document.getElementById('pn2').hidden=b.dataset.tab!=='2'})});
+var TB=[].slice.call(document.querySelectorAll('.tabs button'));
+TB.forEach(function(b,i){b.tabIndex=i?-1:0;b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!k)return;e.preventDefault();var t=TB[(i+k+TB.length)%TB.length];t.focus();t.click()});b.addEventListener('click',function(){TB.forEach(function(x){x.setAttribute('aria-selected',x===b);x.tabIndex=x===b?0:-1});document.getElementById('pn1').hidden=b.dataset.tab!=='1';document.getElementById('pn2').hidden=b.dataset.tab!=='2'})});
 
 (function(){
  var mb=$('.mb'),mm=$('#mm');
