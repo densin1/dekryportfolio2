@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Dekry","url":"https://dekry.cc/","description":"Reels, design and account management for small businesses and experts.","email":"dendekri17@gmail.com","priceRange":"$8-$700","sameAs":["https://t.me/des1n","https://www.behance.net/5db91123"]}</script>
 <style>
-:root{--bg:#08070f;--tx:#f3f0fa;--mut:#a49fb8;--ln:rgba(255,255,255,.16);--gl:rgba(255,255,255,.05);--ac:#b3a5ff;--g:linear-gradient(135deg,#a193ff,#5ec8ff);--f:'Inter Tight','Segoe UI',Arial,sans-serif}
+:root{--bg:#08070f;--tx:#f3f0fa;--mut:#a49fb8;--ln:rgba(255,255,255,.16);--gl:rgba(255,255,255,.05);--ac:#b3a5ff;--c1:#a193ff;--c2:#5ec8ff;--g:linear-gradient(135deg,var(--c1),var(--c2));--grid:rgba(255,255,255,.04);--f:'Inter Tight','Segoe UI',Arial,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;color-scheme:dark;scroll-padding-top:84px}
 body{background:var(--bg);color:var(--tx);font:400 17px/1.55 var(--f);-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);overflow-x:hidden}
@@ -39,6 +39,17 @@ h1{font:800 clamp(40px,9vw,128px)/.95 var(--f);letter-spacing:-.04em;margin:clam
 .st{display:inline-flex;gap:0;flex-wrap:wrap;margin:36px 0 44px;background:var(--gl);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1.5px solid var(--ln);border-radius:14px}
 .st div{padding:16px 26px}.st div+div{border-left:1.5px solid var(--ln)}
 .st b{display:block;font:800 30px/1 var(--f);letter-spacing:-.03em}.st span{font-size:14px;color:var(--mut)}
+.hero{position:relative;isolation:isolate}
+.hbg{position:absolute;left:0;right:0;top:-68px;bottom:0;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.hbg:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 35%,#000,transparent);mask-image:radial-gradient(ellipse 80% 70% at 50% 35%,#000,transparent)}
+.hbg:after{content:"";position:absolute;inset:0;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hbg i{position:absolute;border-radius:50%;will-change:transform}
+.hbg i:nth-child(1){width:46vw;height:46vw;max-width:620px;max-height:620px;background:radial-gradient(closest-side,var(--ac),transparent);opacity:.22;top:2%;left:8%;animation:g1 24s ease-in-out infinite alternate}
+.hbg i:nth-child(2){width:40vw;height:40vw;max-width:540px;max-height:540px;background:radial-gradient(closest-side,var(--c2),transparent);opacity:.16;top:22%;right:4%;animation:g2 30s ease-in-out infinite alternate}
+.hbg i:nth-child(3){width:34vw;height:34vw;max-width:460px;max-height:460px;background:radial-gradient(closest-side,var(--c1),transparent);opacity:.18;top:48%;left:36%;animation:g3 27s ease-in-out infinite alternate}
+@keyframes g1{to{transform:translate(9vw,6vh) scale(1.12)}}@keyframes g2{to{transform:translate(-8vw,8vh) scale(.92)}}@keyframes g3{to{transform:translate(-6vw,-7vh) scale(1.1)}}
+@media(max-width:700px){.hbg i:nth-child(1){width:90vw;height:90vw}.hbg i:nth-child(2){width:80vw;height:80vw;top:30%}.hbg i:nth-child(3){display:none}.hbg:before{background-size:44px 44px}}
+@media(prefers-reduced-motion:reduce){.hbg i{animation:none}}
 @keyframes up{from{transform:translateY(36px);opacity:0}}
 .vs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 22px 6px;scrollbar-width:none;max-width:1180px;margin:0 auto}
 .vs::-webkit-scrollbar{display:none}
@@ -272,7 +283,6 @@ header.hd{transform:translateY(-101%)}
 
 /* ---- v3: conversion and usability ---- */
 .hc{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.hn{font-size:14px;color:var(--mut)}
 .wcta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:40px;padding:24px 28px;border:1.5px solid var(--ln);border-radius:18px;background:var(--gl)}
 .wcta p{font:800 clamp(20px,2.4vw,26px)/1.2 var(--f);letter-spacing:-.02em;max-width:560px}
 .chn{color:var(--mut);font-size:15px;margin:-14px 0 24px;padding-left:14px;border-left:3px solid var(--ac);max-width:470px}
@@ -299,15 +309,16 @@ header.hd{transform:translateY(-101%)}
 </header>
 
 <main id="top">
+<div class="hero"><div class="hbg" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="w">
 <div class="chip"><i></i><span data-t="chip">Відповідаємо протягом кількох годин</span></div>
 <h1 data-t="h1" aria-label="Відео і дизайн, що продають"><span class="w2" aria-hidden="true"><span style="animation-delay:0ms">Відео</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:120ms">і</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:240ms">дизайн,</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:360ms">що</span></span> <span class="w2" aria-hidden="true"><span class="gr" style="animation-delay:480ms">продають</span></span></h1>
 <div class="hr">
 <p class="sub" data-t="sub">Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.</p>
-<div class="hc"><div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a><a class="btn" href="#work" data-t="c2">Дивитися роботи</a></div><p class="hn" data-t="hn"></p></div>
+<div class="hc"><div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="c1">Написати в Telegram</a><a class="btn" href="#work" data-t="c2">Дивитися роботи</a></div></div>
 </div>
 <div class="st" id="st"><div><b data-n="500" data-s="+">500+</b><span>відео та креативів</span></div><div><b data-n="100" data-s="+">100+</b><span>клієнтів</span></div><div><b data-n="3" data-s="">3</b><span>роки досвіду</span></div></div>
-</div>
+</div></div>
 
 <div class="vs">
 <a class="vt" href="https://cdn.dekry.cc/video/project-2-preview.MP4" data-p="2"><video muted="" loop="" playsinline="" preload="none" poster="https://cdn.dekry.cc/img/project-2.jpg" data-src="https://cdn.dekry.cc/video/project-2-preview.MP4" aria-hidden="true"></video><span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>
@@ -379,7 +390,7 @@ uk:{u:'https://dekry.cc/',loc:'uk_UA',title:'Dekry | Відео і дизайн,
 n1:'Послуги',n2:'Роботи',n3:'Ціни',n4:'FAQ',nav:'Написати',
 h1:'Відео і дизайн, що продають',
 sub:'Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.',
-c1:'Написати в Telegram',c2:'Дивитися роботи',hn:'Reels від $10 · 2 правки включено · Вихідники ваші',wC:'Хочете так само для свого бізнесу? Напишіть, обговоримо задачу.',cH:'Що написати: ніша, що потрібно зробити, терміни й орієнтовний бюджет.',
+c1:'Написати в Telegram',c2:'Дивитися роботи',wC:'Хочете так само для свого бізнесу? Напишіть, обговоримо задачу.',cH:'Що написати: ніша, що потрібно зробити, терміни й орієнтовний бюджет.',
 st:[['500+','відео та креативів'],['100+','клієнтів'],['3','роки досвіду']],
 chip:'Відповідаємо протягом кількох годин',ftd:'Контент для бізнесу та експертів.',up:'Нагору',skip:'До змісту',sx:[['Сайти','Лендинги та сайти-візитки під ключ: дизайн, верстка, запуск.','від $200'],['Telegram-боти','Боти для заявок, запису клієнтів і розсилок.','від $150']],sT:'Що ми робимо',ask:'Замовити',
 sv:[['Reels і відео','Монтаж Reels, Shorts і YouTube: ритм, субтитри, звук, обкладинки.','від $10'],['Дизайн','Креативи для реклами, банери, обкладинки, фірмовий стиль.','від $8'],['Ведення акаунта','Контент-план, публікації, підписи, відповіді, звіт.','від $700 / міс']],
@@ -407,7 +418,7 @@ ru:{u:'https://dekry.cc/',loc:'ru_RU',title:'Dekry | Видео и дизайн,
 n1:'Услуги',n2:'Работы',n3:'Цены',n4:'FAQ',nav:'Написать',
 h1:'Видео и дизайн, которые продают',
 sub:'Reels, креативы, брендинг и ведение аккаунта для малого бизнеса и экспертов.',
-c1:'Написать в Telegram',c2:'Смотреть работы',hn:'Reels от $10 · 2 правки включены · Исходники ваши',wC:'Хотите так же для своего бизнеса? Напишите, обсудим задачу.',cH:'Что написать: ниша, что нужно сделать, сроки и примерный бюджет.',
+c1:'Написать в Telegram',c2:'Смотреть работы',wC:'Хотите так же для своего бизнеса? Напишите, обсудим задачу.',cH:'Что написать: ниша, что нужно сделать, сроки и примерный бюджет.',
 st:[['500+','видео и креативов'],['100+','клиентов'],['3','года опыта']],
 chip:'Отвечаем в течение нескольких часов',ftd:'Контент для бизнеса и экспертов.',up:'Наверх',skip:'К содержимому',sx:[['Сайты','Лендинги и сайты-визитки под ключ: дизайн, вёрстка, запуск.','от $200'],['Telegram-боты','Боты для заявок, записи клиентов и рассылок.','от $150']],sT:'Что мы делаем',ask:'Заказать',
 sv:[['Reels и видео','Монтаж Reels, Shorts и YouTube: ритм, субтитры, звук, обложки.','от $10'],['Дизайн','Креативы для рекламы, баннеры, обложки, фирменный стиль.','от $8'],['Ведение аккаунта','Контент-план, публикации, подписи, ответы, отчёт.','от $700 / мес']],
@@ -435,7 +446,7 @@ en:{u:'https://dekry.cc/',loc:'en_US',title:'Dekry | Video and design that sell'
 n1:'Services',n2:'Work',n3:'Pricing',n4:'FAQ',nav:'Contact',
 h1:'Video and design that sell',
 sub:'Reels, creatives, branding and account management for small businesses and experts.',
-c1:'Message on Telegram',c2:'See our work',hn:'Reels from $10 · 2 revisions included · Source files are yours',wC:'Want this for your business? Message us and we’ll talk it through.',cH:'What to send: your niche, what you need, deadline and rough budget.',
+c1:'Message on Telegram',c2:'See our work',wC:'Want this for your business? Message us and we’ll talk it through.',cH:'What to send: your niche, what you need, deadline and rough budget.',
 st:[['500+','videos and creatives'],['100+','clients'],['3','years of experience']],
 chip:'We reply within a few hours',ftd:'Content for businesses and experts.',up:'Back to top',skip:'Skip to content',sx:[['Websites','Landing pages and business sites end to end: design, build, launch.','from $200'],['Telegram bots','Bots for leads, bookings and broadcasts.','from $150']],sT:'What we do',ask:'Order',
 sv:[['Reels and video','Editing for Reels, Shorts and YouTube: pacing, subtitles, sound, covers.','from $10'],['Design','Ad creatives, banners, covers, brand identity.','from $8'],['Account management','Content plan, posting, captions, replies, report.','from $700 / mo']],
