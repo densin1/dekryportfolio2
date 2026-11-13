@@ -141,8 +141,8 @@ h1 .w2>span{display:inline-block;animation:rise var(--d3) var(--e) both}
 .tl::after{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(179,165,255,.2),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .tl:hover::after{opacity:1}
 .rvl{opacity:0}
-.rvl.in{opacity:1;animation:rise2 var(--d3) var(--e) backwards;animation-delay:calc(var(--i,0)*120ms)}
-@keyframes rise2{from{opacity:0;transform:translateY(24px)}}
+.rvl.in{opacity:1;animation:rise2 var(--d3) var(--e) backwards}
+@keyframes rise2{from{opacity:0;transform:translateY(30px)}}
 @media(pointer:coarse){.cur{display:none}}
 @media(max-width:700px){.bg i:nth-child(3){display:none}.vt:nth-child(2n){margin-top:20px}}
 @media(prefers-reduced-motion:reduce){.chip i,.bg i,.mt,h1 .w2>span{animation:none}.rvl{opacity:1}.cur{display:none}.vt video{transition:none}}
@@ -300,26 +300,6 @@ header.hd{transform:translateY(-101%)}
 @media(max-width:520px){.lang button{padding:6px 4px;font-size:13px}header .w{gap:8px}.hc,.hc .cta{width:100%}.hc .btn{flex:1 1 100%;text-align:center}}
 @media(max-width:400px){header .w>.btn{display:none}}
 @media(max-width:700px){.fl{width:auto;padding:0 20px 0 16px}.fl span{display:inline}}
-/* ---- v4: появление разделов в духе полоски этапов ----
-   Тот же язык, что у «Як ми працюємо»: точка-маркер + градиентная линия, которая прорисовывается, блоки загораются по очереди.
-   Только transform/opacity, запускает существующий IntersectionObserver (fx). Без .rvl (reduced-motion, нет IO) всё стоит в конечном виде. */
-h2:not(.cbx h2){position:relative}
-h2:not(.cbx h2)::before{content:"";position:absolute;left:2px;bottom:-22px;width:10px;height:10px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 5px rgba(179,165,255,.18)}
-h2:not(.cbx h2)::after{content:"";position:absolute;left:18px;bottom:-18px;width:min(180px,40%);height:1.5px;background:var(--g);transform-origin:0 50%}
-h2.rvl:not(.cbx h2)::before{transform:scale(0)}
-h2.rvl:not(.cbx h2)::after{transform:scaleX(0)}
-h2.rvl.in:not(.cbx h2)::before{transform:none;transition:transform var(--d2) var(--e) .2s}
-h2.rvl.in:not(.cbx h2)::after{transform:none;transition:transform var(--d3) var(--e) .4s}
-.wh{display:flex;align-items:center;gap:14px}
-.wh::after{content:"";flex:1;height:1.5px;background:var(--ln);transform-origin:0 50%}
-.wh.rvl::after{transform:scaleX(0)}
-.wh.rvl.in::after{transform:none;transition:transform var(--d4) var(--e) .3s}
-/* Карточки: по верхней кромке пробегает градиентная линия (как заполнение полоски) и гаснет. */
-.pcd,.ocd,.rc,details,.vl li,.tm li,.cbx{position:relative}
-.tl.rvl::before,.pcd.rvl::before,.ocd.rvl::before,.rc.rvl::before,details.rvl::before,.vl li.rvl::before,.tm li.rvl::before,.cbx.rvl::before{content:"";position:absolute;left:18px;right:18px;top:0;height:1.5px;background:var(--g);transform:scaleX(0);transform-origin:0 50%;opacity:0;pointer-events:none;z-index:1}
-:is(.tl,.pcd,.ocd,.rc,details,.vl li,.tm li,.cbx).rvl.in::before{animation:trace var(--d4) var(--e) both;animation-delay:calc(var(--i,0)*120ms + .25s)}
-@keyframes trace{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
-@media(prefers-reduced-motion:reduce){.rvl.in,.rvl.in::before{animation:none!important}h2.rvl::before,h2.rvl::after,.wh.rvl::after{transform:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -569,8 +549,7 @@ window.fx=function(){
   window._r=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');window._r.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
   window._c=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;window._c.unobserve(e.target);var b=e.target,n=+b.dataset.n,t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1300);b.textContent=Math.round(n*(1-Math.pow(1-k,3)))+b.dataset.s;if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.6});
  }
- /* Каждый блок группы появляется по очереди, как этапы «Як ми працюємо»: шаг 120ms (как слова заголовка), не больше 6 шагов. */
- document.querySelectorAll('h2,.wh,.tl,.dg img,.rc,.stp li,.pcd,details,.ocd,.wc,.vl li,.tm li,.cbx').forEach(function(el){if(el.classList.contains('rvl'))return;var n=el.matches('.dg img')?el.parentElement:el;el.classList.add('rvl');el.style.setProperty('--i',Math.min(5,[].indexOf.call(n.parentElement.children,n)));window._r.observe(el)});
+ document.querySelectorAll('h2,.tl,.dg img,.rc,.stp li,.pcd,details,.ocd,.wc,.vl li,.tm li,.cbx').forEach(function(el,i){if(el.classList.contains('rvl'))return;el.classList.add('rvl');el.style.animationDelay=(i%4*80)+'ms';window._r.observe(el)});
  document.querySelectorAll('[data-n]').forEach(function(b){b.textContent='0'+b.dataset.s;window._c.observe(b)});
 };
 fx();
