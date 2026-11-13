@@ -290,6 +290,32 @@ header.hd{transform:translateY(-101%)}
 @media(max-width:520px){.lang button{padding:6px 4px;font-size:13px}header .w{gap:8px}.hc,.hc .cta{width:100%}.hc .btn{flex:1 1 100%;text-align:center}}
 @media(max-width:400px){header .w>.btn{display:none}}
 @media(max-width:700px){.fl{width:auto;padding:0 20px 0 16px}.fl span{display:inline}}
+/* ---- v4: акценты и живые детали (тайминги --d2/--e из #11) ---- */
+/* «Ріст»: градиентная рамка, свечение, приподнята над соседями */
+.pcd.hot{position:relative;border-color:transparent;box-shadow:0 30px 80px -34px rgba(94,200,255,.55),0 20px 60px -30px rgba(161,147,255,.7)}
+.pcd.hot::before{content:"";position:absolute;inset:-1.5px;border-radius:inherit;padding:1.5px;background:var(--g);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+@media(min-width:901px){.pks{align-items:center}.pcd.hot{padding-block:42px}}
+/* Вкладки: белая подложка переезжает к выбранной */
+.tabs{position:relative}.tabs button{position:relative;z-index:1}
+.tabs.js::before{content:"";position:absolute;top:5px;bottom:5px;left:0;width:var(--tw,0);transform:translateX(var(--tl,0));border-radius:999px;background:var(--tx)}
+.tabs.js.rd::before{transition:transform var(--d2) var(--e),width var(--d2) var(--e)}
+.tabs.js button[aria-selected=true]{background:none}
+/* FAQ: «+» поворачивается в «×», высоту плавно анимирует JS */
+summary::after{display:inline-block;transition:transform var(--d2) var(--e)}
+details[open] summary::after{content:"+";content:"+"/""}
+details[open]:not(.cl) summary::after{transform:rotate(45deg)}
+/* Telegram: самолётик улетает и прилетает обратно */
+.tg{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.tgi{flex:none}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.tg:hover .tgi,.tg:focus-visible .tgi,.fl:hover .tgi{animation:fly .7s var(--e)}}
+@keyframes fly{45%{transform:translate(20px,-20px);opacity:0}46%{transform:translate(-16px,16px);opacity:0}}
+/* Бегущая строка: залитое / контурное, слово под курсором — градиент */
+.mt span:nth-child(odd){color:var(--tx);-webkit-text-stroke:0}
+@media(hover:hover){.mt span:hover{background:var(--gt);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:0}}
+@media(prefers-reduced-motion:reduce){.tabs.js.rd::before,summary::after{transition:none}}
+/* Финал: крупное «dekry» */
+footer{background:radial-gradient(70% 60% at 50% 100%,rgba(161,147,255,.16),transparent)}
+.fin{font:800 clamp(92px,25.5vw,300px)/1 var(--f);letter-spacing:-.055em;text-align:center;margin:clamp(20px,4vw,48px) 0 -.06em;background:linear-gradient(180deg,var(--tx) 22%,rgba(161,147,255,.45) 62%,transparent 98%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -312,7 +338,7 @@ header.hd{transform:translateY(-101%)}
 <h1 data-t="h1" aria-label="Відео і дизайн, що продають"><span class="w2" aria-hidden="true"><span style="animation-delay:80ms">Відео</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:200ms">і</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:320ms">дизайн,</span></span> <span class="w2" aria-hidden="true"><span style="animation-delay:440ms">що</span></span> <span class="w2" aria-hidden="true"><span class="gr" style="animation-delay:560ms">продають</span></span></h1>
 <div class="hr">
 <p class="sub" data-t="sub">Reels, креативи, брендинг і ведення акаунта для малого бізнесу та експертів.</p>
-<div class="hc"><div class="cta"><a class="btn p" href="#contact" data-t="c1">Написати в Telegram</a><a class="btn" href="#work" data-t="c2">Дивитися роботи</a></div></div>
+<div class="hc"><div class="cta"><a class="btn p tg" href="#contact"><span data-t="c1">Написати в Telegram</span><svg class="tgi" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg></a><a class="btn" href="#work" data-t="c2">Дивитися роботи</a></div></div>
 </div>
 <div class="st" id="st"><div><b data-n="500" data-s="+">500+</b><span>відео та креативів</span></div><div><b data-n="100" data-s="+">100+</b><span>клієнтів</span></div><div><b data-n="3" data-s="">3</b><span>роки досвіду</span></div></div>
 </div></div>
@@ -361,7 +387,7 @@ header.hd{transform:translateY(-101%)}
 <div><h2 data-t="cT">Розкажіть про задачу</h2>
 <p class="csub" data-t="cS">Опишіть задачу в кількох реченнях. Відповімо протягом кількох годин, а після короткого брифу назвемо точну вартість.</p>
 <p class="chn" data-t="cH"></p>
-<div class="cta"><a class="btn p" href="https://t.me/des1n" data-t="cB">Написати в Telegram</a><a class="btn" href="mailto:dendekri17@gmail.com" data-t="cE">Написати на пошту</a></div></div>
+<div class="cta"><a class="btn p tg" href="https://t.me/des1n"><span data-t="cB">Написати в Telegram</span><svg class="tgi" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg></a><a class="btn" href="mailto:dendekri17@gmail.com" data-t="cE">Написати на пошту</a></div></div>
 <ul class="cn">
 <li><a href="https://t.me/des1n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg></span><span><b>Telegram</b><small>@des1n</small></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
 <li><a href="mailto:dendekri17@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span><b>Email</b><small>dendekri17@gmail.com</small></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
@@ -372,14 +398,15 @@ header.hd{transform:translateY(-101%)}
 <nav><a href="#work" data-t="n2">Роботи</a><a href="#services" data-t="n1">Послуги</a><a href="#about" data-t="n5">Про нас</a><a href="#pricing" data-t="n3">Ціни</a><a href="#faq" data-t="n4">FAQ</a></nav>
 <nav><a href="https://t.me/des1n">Telegram</a><a href="https://www.behance.net/5db91123">Behance</a><a href="mailto:dendekri17@gmail.com">Email</a></nav>
 <a class="btn up" href="#top" data-t="up">Нагору</a></div>
-<div class="w cp">© <span id="yr">2026</span> Dekry</div></footer>
+<div class="w cp">© <span id="yr">2026</span> Dekry</div>
+<div class="w fin" aria-hidden="true">dekry</div></footer>
 <dialog id="lb"><button type="button" class="vx" data-a="cl" aria-label="Закрити">×</button><img alt=""></dialog>
 <dialog id="vd" class="vd" aria-labelledby="vdT"><div class="vb">
 <button type="button" class="vx" data-a="cl" aria-label="Закрити">×</button>
 <video controls playsinline preload="metadata"></video>
 <div class="vi"><span class="wk"></span><h3 id="vdT"></h3><p></p><span class="cs"></span><a class="btn p" href="https://t.me/des1n" data-t="mC">Хочу так само</a></div>
 </div></dialog>
-<a class="fl" href="#contact"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg><span data-t="c1">Написати в Telegram</span></a>
+<a class="fl" href="#contact"><svg class="tgi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l6 2.5L11.5 20l3-4.5L19 19z"/><path d="M9 13.5L21 4"/></svg><span data-t="c1">Написати в Telegram</span></a>
 
 <script>
 var D={
@@ -568,6 +595,23 @@ document.addEventListener('pointermove',function(e){
 
 var TB=[].slice.call(document.querySelectorAll('.tabs button'));
 TB.forEach(function(b,i){b.tabIndex=i?-1:0;b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!k)return;e.preventDefault();var t=TB[(i+k+TB.length)%TB.length];t.focus();t.click()});b.addEventListener('click',function(){TB.forEach(function(x){x.setAttribute('aria-selected',x===b);x.tabIndex=x===b?0:-1});document.getElementById('pn1').hidden=b.dataset.tab!=='1';document.getElementById('pn2').hidden=b.dataset.tab!=='2'})});
+/* Вкладки: подложка переезжает к выбранной (позиция пересчитывается при смене языка и ширины). */
+(function(){var tb=document.querySelector('.tabs');if(!tb)return;
+ function pos(){var b=tb.querySelector('[aria-selected=true]');if(!b)return;tb.style.setProperty('--tw',b.offsetWidth+'px');tb.style.setProperty('--tl',b.offsetLeft+'px')}
+ tb.classList.add('js');pos();requestAnimationFrame(function(){tb.classList.add('rd')});
+ tb.addEventListener('click',pos);addEventListener('resize',pos,{passive:true});
+ document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(pos,0)})});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(pos);})();
+/* FAQ: ответ раскрывается и сворачивается по высоте. При reduced-motion — как раньше, мгновенно. */
+(function(){var fq=document.getElementById('fq');if(!fq||!fq.animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var O={duration:450,easing:'cubic-bezier(.2,.7,.2,1)'};
+ fq.addEventListener('click',function(e){var s=e.target.closest('summary');if(!s)return;var d=s.parentNode;if(d.an)return;e.preventDefault();
+  var h0=d.offsetHeight,cs=getComputedStyle(d),sh=s.offsetHeight+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);
+  d.style.overflow='hidden';
+  if(d.open){d.classList.add('cl');d.an=d.animate({height:[h0+'px',sh+'px']},O);d.an.onfinish=function(){d.open=false;d.classList.remove('cl');end(d)}}
+  else{d.open=true;var h1=d.offsetHeight;var p=d.querySelector('p');d.an=d.animate({height:[h0+'px',h1+'px']},O);if(p)p.animate({opacity:[0,1],transform:['translateY(-6px)','none']},O);d.an.onfinish=function(){end(d)}}
+ });
+ function end(d){d.an=null;d.style.overflow=''}})();
 
 (function(){
  var mb=$('.mb'),mm=$('#mm');
@@ -666,10 +710,11 @@ TB.forEach(function(b,i){b.tabIndex=i?-1:0;b.addEventListener('keydown',function
   if(mt){
    mt.style.animation='none';
    var loop=G.to(mt,{xPercent:-50,duration:36,ease:'none',repeat:-1});
-   var sk=G.quickTo(mt,'skewX',{duration:.4,ease:'power3'});
+   var sk=G.quickTo(mt,'skewX',{duration:.4,ease:'power3'}),hov=false,mq=document.querySelector('.mq');
+   if(FINE){mq.addEventListener('pointerenter',function(){hov=true;G.to(loop,{timeScale:.25,duration:.6,overwrite:true})});mq.addEventListener('pointerleave',function(){hov=false;G.to(loop,{timeScale:1,duration:.9,overwrite:true})})}
    ST.create({trigger:'.mq',start:'top bottom',end:'bottom top',onUpdate:function(s){
     var v=Math.min(Math.abs(s.getVelocity())/250,8);
-    G.to(loop,{timeScale:1+v,duration:.25,overwrite:true,onComplete:function(){G.to(loop,{timeScale:1,duration:1.2})}});
+    G.to(loop,{timeScale:1+v,duration:.25,overwrite:true,onComplete:function(){G.to(loop,{timeScale:hov?.25:1,duration:1.2})}});
     sk(G.utils.clamp(-10,10,s.getVelocity()/-180));
    },onLeave:function(){sk(0)},onLeaveBack:function(){sk(0)}});
   }
@@ -704,14 +749,14 @@ if(!gl)return;
 var css=getComputedStyle(root);
 function rgb(v,d){v=(css.getPropertyValue(v)||d).trim();var m=v.match(/^#([0-9a-f]{6})$/i);if(!m)v=d,m=d.match(/^#([0-9a-f]{6})$/i);var n=parseInt(m[1],16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]}
 var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-var fs='precision mediump float;uniform vec2 r;uniform float t,y,k;uniform vec3 a,b,c;'+
+var fs='precision mediump float;uniform vec2 r;uniform float t,y,k;uniform vec2 u,v;uniform vec3 a,b,c;'+
 'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
 'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}'+
 'float fb(vec2 p){float v=0.,w=.5;for(int j=0;j<4;j++){v+=w*n(p);p=p*2.03+7.1;w*=.5;}return v;}'+
 'void main(){vec2 q=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);float s=t*.045;vec2 o=vec2(0.,-y*.55);'+
 'vec2 w=vec2(fb(q*1.3+o+vec2(s,-s*.7)),fb(q*1.3+o+vec2(-s*.6,s)+3.7));float f=fb(q*1.6+o+w*1.8+vec2(0.,s*.5));'+
-'float g1=smoothstep(.75,.0,length(q-vec2(-.45+.12*sin(s*1.9+y*.9),.25+.08*cos(s*1.4+y*.7))));'+
-'float g2=smoothstep(.7,.0,length(q-vec2(.5+.1*cos(s*1.6+y*.8),-.05+.1*sin(s*1.2+y))));'+
+'float g1=smoothstep(.75,.0,length(q-u-vec2(.12*sin(s*1.9+y*.9),.08*cos(s*1.4+y*.7))));'+
+'float g2=smoothstep(.7,.0,length(q-v-vec2(.1*cos(s*1.6+y*.8),.1*sin(s*1.2+y))));'+
 'float wave=smoothstep(.35,.95,f);vec3 col=a*g1*.42+c*g2*.38+mix(b,c,w.x)*wave*.34;'+
 'col*=.85+.15*sin(q.y*6.+f*4.-s*3.-y*2.);float al=clamp(max(max(col.r,col.g),col.b),0.,.5)*k;'+
 'gl_FragColor=vec4(col*.9,al);}';
@@ -720,13 +765,27 @@ var v=sh(gl.VERTEX_SHADER,vs),f=sh(gl.FRAGMENT_SHADER,fs);if(!v||!f)return;
 var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
 gl.useProgram(pr);gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
 var lp=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
-var U={};['r','t','y','k','a','b','c'].forEach(function(x){U[x]=gl.getUniformLocation(pr,x)});
+var U={};['r','t','y','k','u','v','a','b','c'].forEach(function(x){U[x]=gl.getUniformLocation(pr,x)});
 gl.uniform3fv(U.a,rgb('--ac','#b3a5ff'));gl.uniform3fv(U.b,rgb('--c1','#a193ff'));gl.uniform3fv(U.c,rgb('--c2','#5ec8ff'));
 /* Мягкий фон без деталей: рендерим в уменьшенном буфере, браузер растягивает. DPR ≤ 1.5. */
 var dpr=Math.min(window.devicePixelRatio||1,1.5),scale=dpr*(mob?.5:.6),step=1000/(mob?30:40),raf=0,last=0,t0=performance.now(),frames=0,slow=0,lowered=0;
 function size(){var w=Math.max(1,Math.round(innerWidth*scale)),h=Math.max(1,Math.round(innerHeight*scale));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}gl.uniform2f(U.r,cv.width,cv.height)}
 function drop(){cancelAnimationFrame(raf);raf=-1;root.classList.remove('glbg');setTimeout(function(){cv.remove()},1300)}
-function draw(now){var vh=innerHeight||1,sy=(window.scrollY||0)/vh;gl.uniform1f(U.t,(now-t0)/1000);gl.uniform1f(U.y,sy);gl.uniform1f(U.k,1-.22*Math.min(1,sy));gl.drawArrays(gl.TRIANGLES,0,3)}
+/* Пятна следуют за главным элементом раздела: заголовок первого экрана, «Ріст», карточка контактов.
+   Цели считаются по прокрутке (только getBoundingClientRect), в кадре — плавное приближение. Формула шейдера та же. */
+var D0=[-.45,.25,.5,-.05],tg=D0.slice(),cu=D0.slice(),lt=0,tq=false;
+function qx(r,fx,fy){var W=innerWidth,H=innerHeight,m=Math.min(W,H);return[Math.max(-1.1,Math.min(1.1,(r.left+r.width*fx-W/2)/m)),Math.max(-1.3,Math.min(1.3,(H/2-r.top-r.height*fy)/m))]}
+function aim(){tq=false;var H=innerHeight,c=H/2,t=D0,h=document.querySelector('h1'),hr=h&&h.getBoundingClientRect(),
+ hot=document.querySelector('#pn1:not([hidden]) .pcd.hot'),pr=document.getElementById('pricing').getBoundingClientRect(),
+ bx=document.querySelector('.cbx'),cr=bx&&bx.getBoundingClientRect();
+ if(hr&&hr.bottom>0&&hr.top<c){var a=qx(hr,mob?.5:.32,.5);t=[a[0],a[1],D0[2],D0[3]]}
+ else if(hot&&pr.top<c&&pr.bottom>c&&(hr=hot.getBoundingClientRect()).top<H*.8&&hr.bottom>H*.2){var a=qx(hr,.5,.62);t=[a[0]-.18,a[1],a[0]+.2,a[1]-.32]}
+ else if(cr&&cr.top<H*.75&&cr.bottom>H*.2){var a=qx(cr,mob?.5:.25,mob?.3:.45),b=qx(cr,mob?.5:.78,mob?.8:.55);t=[a[0],a[1],b[0],b[1]]}
+ tg=t}
+addEventListener('scroll',function(){if(!tq){tq=true;requestAnimationFrame(aim)}},{passive:true});
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.tabs,.lang'))setTimeout(aim,80)});
+function draw(now){var vh=innerHeight||1,sy=(window.scrollY||0)/vh,dt=lt?Math.min(.1,(now-lt)/1000):0,kk=1-Math.exp(-dt*2.2);lt=now;
+for(var i=0;i<4;i++)cu[i]+=(tg[i]-cu[i])*kk;gl.uniform2f(U.u,cu[0],cu[1]);gl.uniform2f(U.v,cu[2],cu[3]);gl.uniform1f(U.t,(now-t0)/1000);gl.uniform1f(U.y,sy);gl.uniform1f(U.k,1-.22*Math.min(1,sy));gl.drawArrays(gl.TRIANGLES,0,3)}
 function loop(now){if(raf<0)return;raf=0;if(document.hidden)return;raf=requestAnimationFrame(loop);var d=now-last;if(d<step)return;
 /* Медленное устройство: сначала снижаем разрешение (картинка та же), выключаем только если не помогло. */
 if(last&&frames<60){frames++;if(d>step*2.2)slow++;if(frames===60&&slow>30){if(lowered<2){lowered++;scale*=.6;size();frames=slow=0}else return drop()}}
@@ -734,7 +793,7 @@ last=now;draw(now)}
 function go(){if(raf===0&&!document.hidden){last=0;raf=requestAnimationFrame(loop)}}
 size();bg.insertBefore(cv,bg.firstChild);draw(t0);requestAnimationFrame(function(){root.classList.add('glbg')});
 document.addEventListener('visibilitychange',go);
-addEventListener('resize',function(){size();if(!raf)draw(performance.now())},{passive:true});
+addEventListener('resize',function(){size();aim();if(!raf)draw(performance.now())},{passive:true});aim();cu=tg.slice();
 cv.addEventListener('webglcontextlost',function(e){e.preventDefault();drop()});
 (rm.addEventListener?rm.addEventListener('change',function(m){if(m.matches)drop()}):0);
 go();
